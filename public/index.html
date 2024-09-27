@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            margin: 50px auto;
+            width: 300px;
+        }
+        input, textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: teal;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Submit Your Data</h2>
+        <form id="userForm" method="POST" action="/submit-form">
+            <input type="text" name="name" placeholder="Enter your name" required />
+            <input type="email" name="email" placeholder="Enter your email" required />
+            <textarea name="message" placeholder="Enter your message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+

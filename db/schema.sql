@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS formdb;
+
+USE formdb;
+
+CREATE TABLE IF NOT EXISTS form_data (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    message TEXT
+);
