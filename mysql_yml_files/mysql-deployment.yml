@@ -12,6 +12,21 @@ spec:
       labels: 
         app: mysql
     spec:
+      initContainers:
+      - name: init-mysql-db
+        image: mysql:5.7
+        command:
+        - "sh"
+        - "-c"
+        - >
+          mysql -u root -p$MYSQL_ROOT_PASSWORD < /docker-entrypoint-initdb.d/schema.sql;
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: "3121997000123"
+        volumeMounts:
+          - name: init-script 
+            mountPath: /docker-entrypoint-initdb.d
+
       containers:
       - name: mysql
         image: mysql:5.7
@@ -27,3 +42,6 @@ spec:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
+      - name: init-script
+        configMap:
+          name: mysql-init-script

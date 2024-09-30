@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+      - name: nodejs-app
+        image: sid3121997/web-prorject-containerised-web
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MYSQL_HOST
+          value: "mysql" #This should be the service name that exposes MySQL Database within Kubernetes Cluster
+        - name: MYSQL_USER 
+          value: "root"
+        - name: MYSQL_PASSWORD
+          value: "3121997000123"
+        - name: MYSQL_DATABASE
+          value: "formdb" 
